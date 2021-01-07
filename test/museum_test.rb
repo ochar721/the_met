@@ -47,14 +47,18 @@ class PatronTest < Minitest::Test
     expected_2 = [@imax]
     assert_equal expected_2, @dmns.recommend_exhibits(@patron_2)
   end
-
-  def test_it_does_not_have_patrons_by_exhibit_interest
-    @dmns.add_exhibit(@gems_and_minerals)
-    @dmns.add_exhibit(@dead_sea_scrolls)
-    @dmns.add_exhibit(@imax)
-    assert_equal [], @dmns.patrons
-
-  end
-
-
 end
+
+
+# def test_it_does_not_have_patrons_by_exhibit_interest
+#   @dmns.add_exhibit(@gems_and_minerals)
+#   @dmns.add_exhibit(@dead_sea_scrolls)
+#   @dmns.add_exhibit(@imax)
+#   assert_equal [], @dmns.patrons
+# end
+#
+# def test_it_can_list_patrons_by_exhibit_interest
+#
+# end
+#
+# end
