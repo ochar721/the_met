@@ -33,16 +33,27 @@ class PatronTest < Minitest::Test
     assert_equal expected_1, @dmns.exhibits
   end
 
-  def test_it_can_recommend_interests
-    @patron_1.add_interest("Dead Sea Scrolls")
+  def test_it_can_recommend_interests_patron_1
+    @dmns.add_exhibit(@gems_and_minerals)
+    @dmns.add_exhibit(@dead_sea_scrolls)
+    @dmns.add_exhibit(@imax)
     @patron_1.add_interest("Gems and Minerals")
+    @patron_1.add_interest("Dead Sea Scrolls")
     @patron_2.add_interest("IMAX")
 
-    expected_1 = [@dead_sea_scrolls, @gems_and_minerals]
+    expected_1 = [@gems_and_minerals, @dead_sea_scrolls]
     assert_equal expected_1, @dmns.recommend_exhibits(@patron_1)
 
     expected_2 = [@imax]
     assert_equal expected_2, @dmns.recommend_exhibits(@patron_2)
+  end
+
+  def test_it_does_not_have_patrons_by_exhibit_interest
+    @dmns.add_exhibit(@gems_and_minerals)
+    @dmns.add_exhibit(@dead_sea_scrolls)
+    @dmns.add_exhibit(@imax)
+    assert_equal [], @dmns.patrons
+
   end
 
 
